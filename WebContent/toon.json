@@ -1,0 +1,424 @@
+var toon = {
+  "race" : {
+    "id" : "azgarazDwarf",
+    "race" : "Azgaraz Dwarf",
+    "strength" : 3,
+    "toughness" : 3,
+    "agility" : 2,
+    "intelligence" : 2,
+    "willpower" : 2,
+    "fellowship" : 2,
+    "woundThreshold" : 10,
+    "creationPoints" : 20,
+    "shortDescription" : "Dwarf short description",
+    "racialAbilities" : [ {
+      "abilityId" : "grudge",
+      "title" : "Grudge",
+      "description" : "Gain 1 fortune_die to all Melee Attack and Ranged Attack actions against Greenskins, and against any target that has wounded him. This bonus lasts to the end of the encounter",
+      "racialSkills" : [ ]
+    }, {
+      "abilityId" : "childrenOfGrungni",
+      "title" : "Children Of Grungni",
+      "description" : "During character creation train one of the following basic skills - Discipline, Resilience, Weapon Skill",
+      "racialSkills" : [ {
+        "id" : "resilience",
+        "skill" : "Resilience",
+        "ordinal" : 5,
+        "advancedFlag" : false,
+        "description" : null,
+        "characteristic" : {
+          "id" : "toughness",
+          "characteristic" : "Toughness",
+          "stressFlag" : false,
+          "fatigueFlag" : true,
+          "abbreviation" : "TO"
+        }
+      }, {
+        "id" : "discipline",
+        "skill" : "Discipline",
+        "ordinal" : 11,
+        "advancedFlag" : false,
+        "description" : null,
+        "characteristic" : {
+          "id" : "willpower",
+          "characteristic" : "Willpower",
+          "stressFlag" : true,
+          "fatigueFlag" : false,
+          "abbreviation" : "WP"
+        }
+      }, {
+        "id" : "weaponSkill",
+        "skill" : "Weapon Skill",
+        "ordinal" : 9,
+        "advancedFlag" : false,
+        "description" : null,
+        "characteristic" : {
+          "id" : "strength",
+          "characteristic" : "Strength",
+          "stressFlag" : false,
+          "fatigueFlag" : true,
+          "abbreviation" : "ST"
+        }
+      } ]
+    }, {
+      "abilityId" : "nightVision",
+      "title" : "Night Vision",
+      "description" : "2 Fewer misfortune_die are added to dice pool for any effects from darkness of lack of sufficient light",
+      "racialSkills" : [ ]
+    }, {
+      "abilityId" : "sturdy",
+      "title" : "Sturdy",
+      "description" : "Add 5 to encumbrance limit",
+      "racialSkills" : [ ]
+    } ]
+  },
+  "career" : {
+    "id" : "agitator",
+    "name" : "Agitator",
+    "strength" : 0,
+    "toughness" : 0,
+    "agility" : 0,
+    "intelligence" : 1,
+    "willpower" : 0,
+    "fellowship" : 1,
+    "careerAbility" : "Your social initiative checks gain 2 fortune_die",
+    "advanceAction" : 2,
+    "advanceTalent" : 2,
+    "advanceSkill" : 3,
+    "advanceFortune" : 1,
+    "advanceConservative" : 1,
+    "advanceReckless" : 1,
+    "advanceWound" : 0,
+    "stanceConservative" : 2,
+    "stanceReckless" : 2,
+    "careerRaces" : [ {
+      "id" : "reiklander",
+      "race" : "Reiklander",
+      "strength" : 2,
+      "toughness" : 2,
+      "agility" : 2,
+      "intelligence" : 2,
+      "willpower" : 2,
+      "fellowship" : 2,
+      "woundThreshold" : 9,
+      "creationPoints" : 25,
+      "shortDescription" : "Short description",
+      "racialAbilities" : [ {
+        "abilityId" : "adaptable",
+        "title" : "Adaptable",
+        "description" : "Career transitions cost one less advance, which may recuse career transitions to zero advances",
+        "racialSkills" : [ ]
+      }, {
+        "abilityId" : "diversity",
+        "title" : "Diversity",
+        "description" : "At character creation, begin with 25 creation points",
+        "racialSkills" : [ ]
+      }, {
+        "abilityId" : "favoredByFate",
+        "title" : "Favored By Fate",
+        "description" : "Once per session, add 2 fortune_die to any single check",
+        "racialSkills" : [ ]
+      } ]
+    }, {
+      "id" : "azgarazDwarf",
+      "race" : "Azgaraz Dwarf",
+      "strength" : 3,
+      "toughness" : 3,
+      "agility" : 2,
+      "intelligence" : 2,
+      "willpower" : 2,
+      "fellowship" : 2,
+      "woundThreshold" : 10,
+      "creationPoints" : 20,
+      "shortDescription" : "Dwarf short description",
+      "racialAbilities" : [ {
+        "abilityId" : "sturdy",
+        "title" : "Sturdy",
+        "description" : "Add 5 to encumbrance limit",
+        "racialSkills" : [ ]
+      }, {
+        "abilityId" : "grudge",
+        "title" : "Grudge",
+        "description" : "Gain 1 fortune_die to all Melee Attack and Ranged Attack actions against Greenskins, and against any target that has wounded him. This bonus lasts to the end of the encounter",
+        "racialSkills" : [ ]
+      }, {
+        "abilityId" : "nightVision",
+        "title" : "Night Vision",
+        "description" : "2 Fewer misfortune_die are added to dice pool for any effects from darkness of lack of sufficient light",
+        "racialSkills" : [ ]
+      }, {
+        "abilityId" : "childrenOfGrungni",
+        "title" : "Children Of Grungni",
+        "description" : "During character creation train one of the following basic skills - Discipline, Resilience, Weapon Skill",
+        "racialSkills" : [ {
+          "id" : "resilience",
+          "skill" : "Resilience",
+          "ordinal" : 5,
+          "advancedFlag" : false,
+          "description" : null,
+          "characteristic" : {
+            "id" : "toughness",
+            "characteristic" : "Toughness",
+            "stressFlag" : false,
+            "fatigueFlag" : true,
+            "abbreviation" : "TO"
+          }
+        }, {
+          "id" : "weaponSkill",
+          "skill" : "Weapon Skill",
+          "ordinal" : 9,
+          "advancedFlag" : false,
+          "description" : null,
+          "characteristic" : {
+            "id" : "strength",
+            "characteristic" : "Strength",
+            "stressFlag" : false,
+            "fatigueFlag" : true,
+            "abbreviation" : "ST"
+          }
+        }, {
+          "id" : "discipline",
+          "skill" : "Discipline",
+          "ordinal" : 11,
+          "advancedFlag" : false,
+          "description" : null,
+          "characteristic" : {
+            "id" : "willpower",
+            "characteristic" : "Willpower",
+            "stressFlag" : true,
+            "fatigueFlag" : false,
+            "abbreviation" : "WP"
+          }
+        } ]
+      } ]
+    } ],
+    "careerSkills" : [ {
+      "id" : "observation",
+      "skill" : "Observation",
+      "ordinal" : 18,
+      "advancedFlag" : false,
+      "description" : null,
+      "characteristic" : {
+        "id" : "intelligence",
+        "characteristic" : "Intelligence",
+        "stressFlag" : true,
+        "fatigueFlag" : false,
+        "abbreviation" : "INT"
+      }
+    }, {
+      "id" : "guile",
+      "skill" : "Guile",
+      "ordinal" : 14,
+      "advancedFlag" : false,
+      "description" : null,
+      "characteristic" : {
+        "id" : "fellowship",
+        "characteristic" : "Fellowship",
+        "stressFlag" : true,
+        "fatigueFlag" : false,
+        "abbreviation" : "FEL"
+      }
+    }, {
+      "id" : "charm",
+      "skill" : "Charm",
+      "ordinal" : 10,
+      "advancedFlag" : false,
+      "description" : null,
+      "characteristic" : {
+        "id" : "fellowship",
+        "characteristic" : "Fellowship",
+        "stressFlag" : true,
+        "fatigueFlag" : false,
+        "abbreviation" : "FEL"
+      }
+    }, {
+      "id" : "leadership",
+      "skill" : "Leadership",
+      "ordinal" : 16,
+      "advancedFlag" : false,
+      "description" : null,
+      "characteristic" : {
+        "id" : "fellowship",
+        "characteristic" : "Fellowship",
+        "stressFlag" : true,
+        "fatigueFlag" : false,
+        "abbreviation" : "FEL"
+      }
+    }, {
+      "id" : "intuition",
+      "skill" : "Intuition",
+      "ordinal" : 15,
+      "advancedFlag" : false,
+      "description" : null,
+      "characteristic" : {
+        "id" : "intelligence",
+        "characteristic" : "Intelligence",
+        "stressFlag" : true,
+        "fatigueFlag" : false,
+        "abbreviation" : "INT"
+      }
+    } ],
+    "careerTalentSockets" : [ {
+      "id" : {
+        "career" : "agitator",
+        "talent" : "Reputation",
+        "ordinal" : "2"
+      },
+      "dedicatedFlag" : false
+    }, {
+      "id" : {
+        "career" : "agitator",
+        "talent" : "Reputation",
+        "ordinal" : "1"
+      },
+      "dedicatedFlag" : false
+    } ]
+  },
+  "creationLog" : [ {
+    "advanceGroup" : "RACE",
+    "advanceType" : "RACE",
+    "advanceObject" : "azgarazDwarf",
+    "creationPointCost" : 0
+  }, {
+    "advanceGroup" : "RACE",
+    "advanceType" : "CHARACTERISTIC",
+    "advanceObject" : "AGILITY",
+    "creationPointCost" : 0
+  }, {
+    "advanceGroup" : "RACE",
+    "advanceType" : "CHARACTERISTIC",
+    "advanceObject" : "AGILITY",
+    "creationPointCost" : 0
+  }, {
+    "advanceGroup" : "RACE",
+    "advanceType" : "CHARACTERISTIC",
+    "advanceObject" : "FELLOWSHIP",
+    "creationPointCost" : 0
+  }, {
+    "advanceGroup" : "RACE",
+    "advanceType" : "CHARACTERISTIC",
+    "advanceObject" : "FELLOWSHIP",
+    "creationPointCost" : 0
+  }, {
+    "advanceGroup" : "RACE",
+    "advanceType" : "CHARACTERISTIC",
+    "advanceObject" : "INTELLIGENCE",
+    "creationPointCost" : 0
+  }, {
+    "advanceGroup" : "RACE",
+    "advanceType" : "CHARACTERISTIC",
+    "advanceObject" : "INTELLIGENCE",
+    "creationPointCost" : 0
+  }, {
+    "advanceGroup" : "RACE",
+    "advanceType" : "CHARACTERISTIC",
+    "advanceObject" : "STRENGTH",
+    "creationPointCost" : 0
+  }, {
+    "advanceGroup" : "RACE",
+    "advanceType" : "CHARACTERISTIC",
+    "advanceObject" : "STRENGTH",
+    "creationPointCost" : 0
+  }, {
+    "advanceGroup" : "RACE",
+    "advanceType" : "CHARACTERISTIC",
+    "advanceObject" : "STRENGTH",
+    "creationPointCost" : 0
+  }, {
+    "advanceGroup" : "RACE",
+    "advanceType" : "CHARACTERISTIC",
+    "advanceObject" : "TOUGHNESS",
+    "creationPointCost" : 0
+  }, {
+    "advanceGroup" : "RACE",
+    "advanceType" : "CHARACTERISTIC",
+    "advanceObject" : "TOUGHNESS",
+    "creationPointCost" : 0
+  }, {
+    "advanceGroup" : "RACE",
+    "advanceType" : "CHARACTERISTIC",
+    "advanceObject" : "TOUGHNESS",
+    "creationPointCost" : 0
+  }, {
+    "advanceGroup" : "RACE",
+    "advanceType" : "CHARACTERISTIC",
+    "advanceObject" : "WILLPOWER",
+    "creationPointCost" : 0
+  }, {
+    "advanceGroup" : "RACE",
+    "advanceType" : "CHARACTERISTIC",
+    "advanceObject" : "WILLPOWER",
+    "creationPointCost" : 0
+  }, {
+    "advanceGroup" : "CAREER",
+    "advanceType" : "CAREER",
+    "advanceObject" : "agitator",
+    "creationPointCost" : 0
+  }, {
+    "advanceGroup" : "CAREER",
+    "advanceType" : "CHARACTERISTIC",
+    "advanceObject" : "FELLOWSHIP",
+    "creationPointCost" : 0
+  }, {
+    "advanceGroup" : "CAREER",
+    "advanceType" : "CHARACTERISTIC",
+    "advanceObject" : "INTELLIGENCE",
+    "creationPointCost" : 0
+  }, {
+    "advanceGroup" : "CHARACTERISTIC",
+    "advanceType" : "CHARACTERISTIC",
+    "advanceObject" : "TOUGHNESS",
+    "creationPointCost" : 4
+  }, {
+    "advanceGroup" : "CHARACTERISTIC",
+    "advanceType" : "CHARACTERISTIC",
+    "advanceObject" : "STRENGTH",
+    "creationPointCost" : 4
+  }, {
+    "advanceGroup" : "SKILL",
+    "advanceType" : "SKILL",
+    "advanceObject" : "charm",
+    "creationPointCost" : 0
+  }, {
+    "advanceGroup" : "TALENT",
+    "advanceType" : "TALENT",
+    "advanceObject" : "clever",
+    "creationPointCost" : 1
+  }, {
+    "advanceGroup" : "TALENT",
+    "advanceType" : "TALENT",
+    "advanceObject" : "charismatic",
+    "creationPointCost" : 1
+  }, {
+    "advanceGroup" : "ACTION",
+    "advanceType" : "ACTION",
+    "advanceObject" : "ACTION",
+    "creationPointCost" : 0
+  } ],
+  "talents" : [ {
+    "id" : "clever",
+    "talentType" : {
+      "talentType" : "Focus"
+    },
+    "title" : "Clever",
+    "description" : "When spending fortune_die points on an Intelligence check, the check gains: 2 boon_result, Add 1 success_result to the results",
+    "stanceConservative" : null,
+    "stanceReckless" : null,
+    "traits" : null,
+    "severityRating" : null,
+    "gameSet" : null
+  }, {
+    "id" : "charismatic",
+    "talentType" : {
+      "talentType" : "Reputation"
+    },
+    "title" : "Charismatic",
+    "description" : "When you spend fortune_die points on a Fellowship check, the check gains: 2 boon_result, Add 1 success_result to the results",
+    "stanceConservative" : null,
+    "stanceReckless" : null,
+    "traits" : null,
+    "severityRating" : null,
+    "gameSet" : null
+  } ],
+  "wealth" : null
+};

@@ -1,0 +1,99 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+	<META HTTP-EQUIV="pragma" CONTENT="no-cache">
+	<META HTTP-EQUIV="Expires" CONTENT="-1">
+	<META HTTP-EQUIV="Content-Type" content="text/html; charset=ISO-8859-1">
+	<title>Cache Display</title>
+	<style type="text/css">
+	      body { font-family: Arial, "MS Trebuchet", sans-serif; font-size: 10px;}
+	      table { font-family: Arial, "MS Trebuchet", sans-serif; font-size: 10px;}
+	      .arrayTable { border: 1px dashed #999; background-color: #DDD; padding: 5px;}
+	      .arrayTr { border: 1px dashed #999; background-color: #DDD; padding: 5px;}
+	      .arrayTd { border: 1px dashed #999; background-color: #DDD; padding: 5px; vertical-align: top;}
+	      .associativeTable { border: 8px solid #999; background-color: #999; padding: 1px;}
+	      .associativeTr { border: 1px solid #999; background-color: #AAA; padding: 5px;}
+	      .associativeTd { border: 1px solid #999; background-color: #AAA; padding: 5px; vertical-align: top;}
+	</style>
+	<script src="js/json-util.js" type="text/javascript"></script>
+	<script src="cache.clustered.staging.json" type="text/javascript"></script>
+    <script src="toon.json" type="text/javascript"></script>
+</head>
+
+
+<body>
+<h1>toon</h1>
+<div id="toon"></div>
+<h1>full</h1>
+<div id="json"></div>
+<h1>filtered</h1>
+<div id="filtered"></div>
+
+<script>
+
+document.getElementById('toon').innerHTML = JsonUtil.tableifyObject(toon);
+
+//document.getElementById('filtered').innerHTML = JsonUtil.tableifyObject(buildFlowMap(data));
+
+//document.getElementById('json').innerHTML = JsonUtil.tableifyObject(data);
+
+function buildFlowMap(data_) {
+
+  var dataOut = {};
+
+    for(var _index in data_) {
+	    if (data_[_index].fqn.lastElement === 'ESBMON') {
+	      for (var _esbMonIndex in data_[_index].children) {
+	        activeFlow = data_[_index].children[_esbMonIndex].fqn.lastElement;
+	        for (var _esbMonBspIndex in data_[_index].children[_esbMonIndex].children) {
+	          dataOut = JsonUtil.addToMapOfMaps(dataOut, activeFlow, 'ESBMON', data_[_index].children[_esbMonIndex].children[_esbMonBspIndex].data);
+	        }
+	      }
+	    }
+
+	    if (data_[_index].fqn.lastElement === 'CDEF') {
+	          for (var _esbCdefIndex in data_[_index].children) {
+	            activeFlow = data_[_index].children[_esbCdefIndex].fqn.lastElement;
+	            dataOut = JsonUtil.addToMapOfMaps(dataOut, activeFlow, 'CDEF', data_[_index].children[_esbCdefIndex].data);
+	          }
+	    }
+
+	    if (data_[_index].fqn.lastElement === 'MMDEF') {
+	          for (var _mMdefIndex in data_[_index].children) {
+	            activeFlow = data_[_index].children[_mMdefIndex].fqn.lastElement;
+	            dataOut = JsonUtil.addToMapOfMaps(dataOut, activeFlow, 'MMDEF', data_[_index].children[_mMdefIndex].data);
+	          }
+	    }
+
+	    if (data_[_index].fqn.lastElement === 'FLOW') {
+	          for (var _flowIndex in data_[_index].children) {
+	            activeFlow = data_[_index].children[_flowIndex].data.flowDefName;
+	            // 2 cases. activeFlow is defined, and therefore is not an outOfOrderFlow OR acitveBsp is undefined, identifying it as an outOfOrderFlow
+	            // add endpoint data
+	            switch (activeFlow) {
+			        case undefined : 
+			        	// out of order flow key/value
+			        	var input = data_[_index].children[_flowIndex].data;
+			        	var flowDefName = input.outOfOrderFlow.flowDefName;
+			        	dataOut = JsonUtil.addToMapOfMaps(dataOut, flowDefName, 'outOfOrderFlow', input.outOfOrderFlow);
+			        	break;
+		            default:
+			            var input = data_[_index].children[_flowIndex].data;
+			            for (var flowChild in data_[_index].children[_flowIndex].children) {
+			              var exitTopicMap = data_[_index].children[_flowIndex].children[flowChild].data;
+			              for (topic in exitTopicMap) {
+			                input[topic] = exitTopicMap[topic];
+			              }
+			            }            
+			            dataOut = JsonUtil.addToMapOfMaps(dataOut, activeFlow, 'FLOW', input);
+			            break;
+	           	}
+	        }
+	    }
+    }
+    return dataOut;
+}
+
+</script>
+</body>
+</html>
